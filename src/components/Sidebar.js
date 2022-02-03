@@ -48,13 +48,13 @@ const Sidebar = () => {
             <Link to='/'>
                 <H1>Liste de bénévoles</H1>
             </Link>
-            <Link to='/'>
+            <Link to='/news'>
                 <H1>News</H1>
             </Link>
             <Link to='/'>
                 <H1>F.A.Q</H1>
             </Link>
-            <Link to='/'>
+            <Link to='/messagerie'>
                 <H1>Messagerie</H1>
             </Link>
         </Nav>
