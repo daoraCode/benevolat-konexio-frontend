@@ -4,3 +4,20 @@
   text-decoration: none;
   list-style: none;
 } 
+
+.link {
+  text-decoration: none;
+}
+
+.nav:hover {
+  background: rgba(0, 0, 0, 0.3);
+  width: fit-content;
+  padding: 0 30px;
+  text-align: center;
+  border-radius: 9999px;
+  margin: 0 auto;
+}
+
+.link-card {
+  color: black;
+}
