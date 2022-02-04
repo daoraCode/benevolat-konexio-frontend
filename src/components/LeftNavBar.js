@@ -14,8 +14,9 @@ const Nav = styled.nav`
 
     @media (max-width: 1010.98px) {
         width: 100%;
-        border: none;
         height: 90vh;
+        border-left: none;
+        border-top: 6px solid #0375BB;
     }
 `
 
