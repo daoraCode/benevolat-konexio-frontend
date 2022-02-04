@@ -6,29 +6,24 @@ const Nav = styled.nav`
     justify-content: center;
     flex-direction: column;
     background: #F6BC4D;
-    width: 509px;
+    width: 450px;
     height: 100vh;
     right: 0;
-    position: fixed;
-    border-left: 4px solid #0375BB;
-    box-sizing: border-box;
-    z-index: 2;
+    border-left: 6px solid #0375BB;
+    box-sizing: content-box;
 
-    @media (max-width: 1500px) {
+    @media (max-width: 1010.98px) {
         width: 100%;
+        border: none;
+        height: 90vh;
     }
 `
 
 const Title = styled.h1`
     color: #0375BB;
-    font-size: 50px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 60px;
-    letter-spacing: 0em;
     text-align: center;
-    -webkit-letter-spacing: 0em;
-    -moz-letter-spacing: 0em;
-    -ms-letter-spacing: 0em;
 `
 
 const Subtitle = styled.h3`
@@ -38,9 +33,6 @@ const Subtitle = styled.h3`
     line-height: 38px;
     letter-spacing: 0em;
     text-align: center;
-    -webkit-letter-spacing: 0em;
-    -moz-letter-spacing: 0em;
-    -ms-letter-spacing: 0em;
 `
 
 const ContainerTitle = styled.div`
@@ -64,9 +56,6 @@ const ButtonSignup = styled.button`
     line-height: 45px;
     letter-spacing: 0em;
     text-align: center;
-
-    -webkit-align-self: center;
-    -ms-flex-item-align: center;
 `
 
 const SpanLink = styled.span`
@@ -86,12 +75,8 @@ const LeftNavBar = () => {
                 <Title>Tu veux devenir un bénévole ?</Title>
                 <Subtitle>Rejoins-nous</Subtitle>
             </ContainerTitle>
-            <ButtonSignup
-                // onClick={}
-            >
-                S'inscrire
-            </ButtonSignup>
-            <SpanLink>Vous avez des questions ? Visiter la page F.A.Q.</SpanLink>
+            <ButtonSignup>S'inscrire</ButtonSignup>
+            <SpanLink>Vous avez des questions ? Visitez notre page F.A.Q.</SpanLink>
         </Nav>
     );
 };
