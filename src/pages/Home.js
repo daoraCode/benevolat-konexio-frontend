@@ -2,8 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
-import { Title, Content, Container } from "../components/styled-components/FormPage";
+import {
+  Title,
+  Content,
+  Container,
+} from "../components/styled-components/FormPage";
 import { ListSessionsContext } from "../context/ListSessions";
+import moment from "moment";
+import "moment/locale/fr"
 
 const List = styled.div`
   margin-top: 22px;
@@ -55,24 +61,33 @@ const Home = () => {
     getSessions();
   });
 
-  console.log(sessions)
-
   return (
     <Container>
       <Sidebar />
       <Content>
         <Title>Sessions</Title>
         <List>
-          {/* {sessions && sessions.lenght > 0 && ( */}
-            <CardSessions session="DigitAll">
-              <Link to="/" className="link link-card">
-                <CardTitle>1 Janvier - 3 Février</CardTitle>
-                <CardInfo>Place disponibles: 5</CardInfo>
-                <CardInfo>Lieu: Paris</CardInfo>
-                <CardInfo>Sessions: DigitAll</CardInfo>
-              </Link>
-            </CardSessions>
-         {/* )}  */}
+          {sessions &&
+            sessions.length > 0 &&
+            sessions.map((session) => {
+              const { program, numberOfPlace, adress, startDate, endDate } = session
+              const start = moment(startDate).locale("fr").format("DD MMMM")
+              const end = moment(endDate).locale("fr").format("DD MMMM")
+              return (
+                <CardSessions session={program.name} key={session._id}>
+                  <Link to="/" className="link link-card">
+                    <CardTitle>
+                      {start} - {end}
+                    </CardTitle>
+                    <CardInfo>
+                      Places disponibles: {numberOfPlace}
+                    </CardInfo>
+                    <CardInfo>Lieu: {adress}</CardInfo>
+                    <CardInfo>Sessions: {program.name}</CardInfo>
+                  </Link>
+                </CardSessions>
+              );
+            })}
         </List>
       </Content>
     </Container>

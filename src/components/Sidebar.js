@@ -49,10 +49,7 @@ const Sidebar = () => {
         <Nav>
             <Img src={Logo} />
             <Link to='/home' className="link nav">
-                <H1>Home</H1>
-            </Link>
-            <Link to='/' className="link nav">
-                <H1>Liste de bénévoles</H1>
+                <H1>Sessions</H1>
             </Link>
             <Link to='/' className="link nav">
                 <H1>News</H1>
