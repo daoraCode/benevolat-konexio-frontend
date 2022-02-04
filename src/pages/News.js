@@ -70,8 +70,6 @@ const News = () => {
                 </p>
          
             </div>
-            <div className="contents"> 
-        </div>
         </Newnews>
     );
 };
