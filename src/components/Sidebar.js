@@ -35,10 +35,11 @@ const Img = styled.img`
 const H1 = styled.h1`
     font-family: 'Poppins';
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
-    line-height: 80px;
+    /* line-height: 40px; */
+    margin: 15px 0;
     text-decoration: none;
     color: #fff;
 `
@@ -54,12 +55,16 @@ const Sidebar = () => {
                 <H1>Liste de bénévoles</H1>
             </Link>
             <Link to='/news' className="link nav">
+                <H1>Sessions</H1>
+            </Link>
+            <Link to='/' className="link nav">
                 <H1>News</H1>
             </Link>
             <Link to='/' className="link nav">
                 <H1>F.A.Q</H1>
             </Link>
-            <Link to='/messagerie' className="link nav">
+            <Link to='/messagerie' className="link nav"></Link>
+            <Link to='/' className="link nav">
                 <H1>Messagerie</H1>
             </Link>
         </Nav>
