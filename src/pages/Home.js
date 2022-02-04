@@ -1,20 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
-import Title from "../components/styled-components/Title";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Sessions = styled.div`
-  width: 100%;
-  margin-left: 60px;
-  margin-right: 30px;
-  margin-top: 20px;
-`;
+import { Title, Content, Container } from "../components/styled-components/FormPage";
+import { ListSessionsContext } from "../context/ListSessions";
 
 const List = styled.div`
   margin-top: 22px;
@@ -51,39 +40,41 @@ const CardSessions = styled.div`
   }
 `;
 
-const CardTitle = styled.div`
+const CardTitle = styled.p`
   font-size: 28px;
 `;
 
-const CardInfo = styled.div`
+const CardInfo = styled.p`
   font-size: 16px;
 `;
 
 const Home = () => {
+  const { sessions, getSessions } = useContext(ListSessionsContext);
+
+  useEffect(() => {
+    getSessions();
+  });
+
+  console.log(sessions)
+
   return (
     <Container>
       <Sidebar />
-      <Sessions>
+      <Content>
         <Title>Sessions</Title>
         <List>
-          <CardSessions session="DigitAll">
-            <Link to="/" className="link link-card">
-              <CardTitle>1 Janvier - 3 Février</CardTitle>
-              <CardInfo>Place disponibles: 5</CardInfo>
-              <CardInfo>Lieu: Paris</CardInfo>
-              <CardInfo>Sessions: DigitAll</CardInfo>
-            </Link>
-          </CardSessions>
-          <CardSessions session="DigitStart">
-            <Link to="/" className="link link-card">
-              <CardTitle>1 Janvier - 3 Février</CardTitle>
-              <CardInfo>Place disponibles: 5</CardInfo>
-              <CardInfo>Lieu: Paris</CardInfo>
-              <CardInfo>Sessions: DigiStart</CardInfo>
-            </Link>
-          </CardSessions>
+          {/* {sessions && sessions.lenght > 0 && ( */}
+            <CardSessions session="DigitAll">
+              <Link to="/" className="link link-card">
+                <CardTitle>1 Janvier - 3 Février</CardTitle>
+                <CardInfo>Place disponibles: 5</CardInfo>
+                <CardInfo>Lieu: Paris</CardInfo>
+                <CardInfo>Sessions: DigitAll</CardInfo>
+              </Link>
+            </CardSessions>
+         {/* )}  */}
         </List>
-      </Sessions>
+      </Content>
     </Container>
   );
 };

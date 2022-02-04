@@ -35,10 +35,11 @@ const Img = styled.img`
 const H1 = styled.h1`
     font-family: 'Poppins';
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
-    line-height: 80px;
+    /* line-height: 40px; */
+    margin: 15px 0;
     text-decoration: none;
     color: #fff;
 `
