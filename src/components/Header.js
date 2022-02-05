@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import Logo from '../images/konexio.png';
+import React from 'react'
+import styled from 'styled-components'
+import Logo from '../images/konexio.png'
 
-const Header = styled.header`
+const FirstHeader = styled.header`
     box-sizing: content-box;
 
     @media (max-width: 510.98px) {
@@ -24,12 +24,12 @@ const Img = styled.img`
     }
 `
 
-const HeaderAuth = () => {
+const Header = () => {
     return (
-        <Header>
+        <FirstHeader>
             <Img src={Logo} />
-        </Header>
-    );
-};
+        </FirstHeader>
+    )
+}
 
-export default HeaderAuth;
+export default Header

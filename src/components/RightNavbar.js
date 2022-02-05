@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import ButtonComponent from './ButtonComponent';
 
 const Nav = styled.nav`
     display: flex;
     justify-content: center;
     flex-direction: column;
     background: #F6BC4D;
-    width: 450px;
+    width: 590px;
     height: 100vh;
+
+    top: 0;
     right: 0;
+    right: ${props => props.right || '0'};
     border-left: 6px solid #0375BB;
     box-sizing: content-box;
 
@@ -43,22 +47,6 @@ const ContainerTitle = styled.div`
     padding: 20px;
 `
 
-const ButtonSignup = styled.button`
-    margin-top: 20px;
-    height: 62px;
-    width: 315px;
-    color: #fff;
-    align-self: center;
-    border-radius: 81px;
-    border-style: none;
-    background: #0375BB;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 45px;
-    letter-spacing: 0em;
-    text-align: center;
-`
-
 const SpanLink = styled.span`
     bottom: 30px;
     font-size: 16px;
@@ -66,20 +54,22 @@ const SpanLink = styled.span`
     align-items: center;
     text-align: center;
     position: relative;
-    margin: 100px auto;
+    margin: 50px;
 `
 
-const LeftNavBar = () => {
+const RightNavbar = ({ right }) => {
     return (
-        <Nav>
+        <Nav
+            right={right}
+        >
             <ContainerTitle>
                 <Title>Tu veux devenir un bénévole ?</Title>
                 <Subtitle>Rejoins-nous</Subtitle>
             </ContainerTitle>
-            <ButtonSignup>S'inscrire</ButtonSignup>
-            <SpanLink>Vous avez des questions ? Visitez notre page F.A.Q.</SpanLink>
+            <ButtonComponent label="S'inscrire" hover />
+            <SpanLink>Vous avez des questions? Visitez la page F.A.Q.</SpanLink>
         </Nav>
     );
 };
 
-export default LeftNavBar;
+export default RightNavbar
