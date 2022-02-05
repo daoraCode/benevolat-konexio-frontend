@@ -49,22 +49,18 @@ const Sidebar = () => {
         <Nav>
             <Img src={Logo} />
             <Link to='/home' className="link nav">
-                <H1>Home</H1>
+                <H1>Session</H1>
             </Link>
-            <Link to='/' className="link nav">
-                <H1>Liste de bénévoles</H1>
+            <Link to='/profile' className="link nav">
+                <H1>Profile</H1>
             </Link>
             <Link to='/news' className="link nav">
-                <H1>Sessions</H1>
-            </Link>
-            <Link to='/' className="link nav">
                 <H1>News</H1>
             </Link>
             <Link to='/' className="link nav">
                 <H1>F.A.Q</H1>
             </Link>
-            <Link to='/messagerie' className="link nav"></Link>
-            <Link to='/' className="link nav">
+            <Link  to='/messagerie' className="link nav">
                 <H1>Messagerie</H1>
             </Link>
         </Nav>

@@ -7,12 +7,12 @@ import { BsPencilSquare } from 'react-icons/bs';
 
 
 import { useState } from 'react'
-import CreateWriteModal from '../to write/CreateWriteModal';
-import CreateWriteForm from '../to write/CreateWriteForm';
+import CreateWriteModal from '../modals/CreateWriteModal';
+// import CreateWriteForm from '../modals/CreateWriteForm';
 
 
 
-const Milieu = styled.div`
+const Container = styled.div`
 display:flex;
 
  .messagerie h1 {
@@ -86,8 +86,8 @@ display:flex;
 const Messagerie = () => {
     const [createWriteModalVisible, setCreateWriteModalVisible] = useState(false)
     return (
-        <Milieu>
-            <Sidebar setCreateWriteModalVisible={setCreateWriteModalVisible} createWriteModalVisible={createWriteModalVisible} />
+        <Container>
+            <Sidebar />
         <div className="messagerie">
            <h1>Messagerie</h1>
            <div className ="buttons">
@@ -106,38 +106,10 @@ const Messagerie = () => {
             isOpen={createWriteModalVisible}
             onClose={() => setCreateWriteModalVisible(false)}
             />
-        </Milieu>
+        </Container>
     
     );
 };
-
-// const Profil = () => {
-//     const [createTweetModalVisible, setCreateTweetModalVisible] = useState(false)
-//     const { user } = useContext(UserContext)
-//     const { id } = useParams()
-  
-  
-//       return (
-//         <Container>
-//           <Ap>
-//           <div className="app">
-    
-//             {/*SIDEBAR*/}
-//             <Sidebar setCreateWriteModalVisible={setCreateWriteModalVisible} createWriteModalVisible={createWriteModalVisible}/>
-//             {/*FEED*/}
-//             <GlobalProfile/>
-//             {/*WIDGETS*/}
-//             <Widgets />
-            
-//           </div>
-//           </Ap>
-//           <CreateWriteModal
-//             isOpen={createTweetModalVisible}
-//             onClose={() => setCreateTweetModalVisible(false)}
-//             />
-//         </Container>
-//       );
-//   };
-
+ 
 export default Messagerie;
 

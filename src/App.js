@@ -3,10 +3,11 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Error404 from './pages/Error404';
 import Home from './pages/Home';
-import EmailList from './pages/Messagerie';
+import Messagerie from './pages/Messagerie';
 import News from './pages/News';
 import Sessions from "./pages/Sessions";
 import { ListSessionsContextProvider } from "./context/ListSessions";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -14,9 +15,10 @@ const App = () => {
       <ListSessionsContextProvider>
         <Routes>
           <Route exact path="/home" element={<Home />} />
-          <Route path="/messagerie" element ={<EmailList />} />
+          <Route path="/messagerie" element ={<Messagerie />} />
           <Route path="/news" element ={<News />} />
-          <Route exact path="/sessions" element={<Home />} />
+          <Route exact path="/sessions" element={<Sessions />} />
+          <Route path="/profile" element ={<Profile />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </ListSessionsContextProvider>

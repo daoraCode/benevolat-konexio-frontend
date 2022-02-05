@@ -31,10 +31,6 @@ display: flex;
 }
 
 `
-
-
-
-
 const News = () => {
     return (
         <Newnews>
