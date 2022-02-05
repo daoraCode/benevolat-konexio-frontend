@@ -26,7 +26,7 @@ const Nav = styled.nav`
 
 const Title = styled.h1`
     color: #0375BB;
-    font-size: 47px;
+    font-size: 37px;
     font-weight: 700;
     text-align: center;
 `
@@ -35,8 +35,6 @@ const Subtitle = styled.h3`
     font-size: 25px;
     font-style: normal;
     font-weight: 400;
-    line-height: 38px;
-    letter-spacing: 0em;
     text-align: center;
 `
 
@@ -63,11 +61,11 @@ const RightNavbar = ({ right }) => {
             right={right}
         >
             <ContainerTitle>
-                <Title>Tu veux devenir un bénévole ?</Title>
-                <Subtitle>Rejoins-nous</Subtitle>
+                <Title>Vous souhaitez devenir bénévole ?</Title>
+                <Subtitle>Rejoignez-nous</Subtitle>
             </ContainerTitle>
             <ButtonComponent label="S'inscrire" hover />
-            <SpanLink>Vous avez des questions? Visitez la page F.A.Q.</SpanLink>
+            <SpanLink>Commment ça marche ? Visitez la page F.A.Q.</SpanLink>
         </Nav>
     );
 };

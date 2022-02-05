@@ -32,7 +32,7 @@ const SigninContainer = styled.div`
 const MainTitle = styled.h1`
     text-align: center;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 50px;
     display: flex;
     color: #0375BB;
     justify-content: center;
@@ -40,11 +40,11 @@ const MainTitle = styled.h1`
     margin: 20px;
 
     @media (max-width: 1300.98px) {
-        font-size: 60px;
+        font-size: 47px;
     }
 
     @media (max-width: 1150.98px) {
-        font-size: 55px;
+        font-size: 44px;
     }
 `
 
@@ -64,7 +64,7 @@ const Layouts = ({ }) => {
                 <Header />
                 <SigninContainer>
                     <ContainerSignin>
-                        <MainTitle>Se connecter à son profil :</MainTitle>
+                        <MainTitle>Déjà inscrit.e ? Connectez-vous à votre profil :</MainTitle>
                         <LoginForm>
                             <InputComponent placeholder="Adresse e-mail" name="email" type="text" />
                             <InputComponent placeholder="Mot de passe" name="password" type="password" />
