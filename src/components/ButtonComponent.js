@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 const Btn = styled.button`
     color: #FFF;
-    margin: 30px;
+    margin: 63px;
     border-radius: 81px;
     border-style: none;
-    background: #0375BB;
+    background: #16A8E0;
     font-size: 30px;
     font-weight: 700;
     line-height: 45px;
@@ -20,9 +20,9 @@ const Btn = styled.button`
     if (props.hover) {
       return (
         `&:hover {
-          color: #0375BB;
+          color: #16A8E0;
           background-color: white;
-          border: 3px solid #0375BB;
+          border: 3px solid #16A8E0;
         }`
       )
     }

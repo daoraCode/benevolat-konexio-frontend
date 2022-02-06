@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Input = styled.input`
     border-radius: 81px;
-    width: ${props => props.width || '720px'};
+    width: ${props => props.width || '360px'};
     line-height: 45px;
     font-size: 30px;
     height: 62px;
@@ -31,7 +31,9 @@ const Input = styled.input`
     }
 `
 
-const InputComponent = ({ name, placeholder, type, value, width }) => {
+
+// Second Input small version
+const InputComponentSmallWd = ({ name, placeholder, type, value, width }) => {
     return (
         <Input
            placeholder={placeholder}
@@ -43,4 +45,4 @@ const InputComponent = ({ name, placeholder, type, value, width }) => {
     )
 }
 
-export default InputComponent
+export default InputComponentSmallWd

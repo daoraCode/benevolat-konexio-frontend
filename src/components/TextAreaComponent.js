@@ -9,7 +9,7 @@ const TextAreaSignUp = styled.textarea`
     background: #F4F4F4;
 `
 
-const TextArea = ({ name, placeholder, height, onChange, value, height }) => {
+const TextAreaTextAreaComponent = ({ name, placeholder, height, onChange, value, height }) => {
     return (
         <TextAreaSignUp
             as='textarea'
@@ -22,4 +22,4 @@ const TextArea = ({ name, placeholder, height, onChange, value, height }) => {
     )
 }
 
-export default TextArea
+export default TextAreaTextAreaComponent

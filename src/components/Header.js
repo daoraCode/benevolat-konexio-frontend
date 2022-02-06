@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Logo from '../images/konexio.png'
 
-const FirstHeader = styled.header`
+const MainHeader = styled.header`
     box-sizing: content-box;
 
     @media (max-width: 510.98px) {
@@ -26,9 +26,9 @@ const Img = styled.img`
 
 const Header = () => {
     return (
-        <FirstHeader>
-            <Img src={Logo} />
-        </FirstHeader>
+        <MainHeader>
+            <Img src={Logo} alt="Konexio" />
+        </MainHeader>
     )
 }
 
