@@ -10,18 +10,18 @@ const ListSessionsContextProvider = ({children}) => {
       credentials: 'include'
     })
 
-    const data = response.json()
+    const data = await response.json()
 
     setSessions(data)
   }
 
-  const values = {
+  const value = {
     sessions,
     getSessions
   }
 
   return (
-    <ListSessionsContext.Provider value={values}>
+    <ListSessionsContext.Provider value={value}>
       {children}
     </ListSessionsContext.Provider>
   )
