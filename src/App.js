@@ -9,6 +9,7 @@ import News from './pages/News';
 import Sessions from "./pages/Sessions";
 import { ListNewsContextProvider } from "./context/ListNews";
 import Profile from "./pages/Profile";
+import Faq from "./pages/Faq";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/news" element ={<News />} />
           <Route exact path="/sessions" element={<Sessions />} />
           <Route path="/profile" element ={<Profile />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         </ListNewsContextProvider>
