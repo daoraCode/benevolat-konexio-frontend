@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Input = styled.input`
     border-radius: 81px;
-    width: ${props => props.width || '720px'};
+    width: ${props => props.width || '767px'};
     line-height: 45px;
     font-size: 30px;
     height: 62px;
@@ -11,8 +11,8 @@ const Input = styled.input`
     border-style: none;
     justify-content: center;
     align-items: center;
-    padding-left: 20px;
-    margin-top: 15px;
+    padding-left: 24px;
+    margin: 11px;    
     
     @media (max-width: 1300.98px) {
         width: 610px;

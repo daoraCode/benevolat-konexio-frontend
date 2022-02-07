@@ -11,8 +11,8 @@ const Input = styled.input`
     border-style: none;
     justify-content: center;
     align-items: center;
-    padding-left: 20px;
-    margin-top: 15px;
+    padding-left: 24px;
+    margin: 11px;
     
     @media (max-width: 1300.98px) {
         width: 610px;

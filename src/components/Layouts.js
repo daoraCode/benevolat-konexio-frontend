@@ -10,18 +10,15 @@ const Page = styled.div`
     display: block;
     box-sizing: content-box;
     width: 100vw;
-    
-    /* min-width: 100vh; */
-    /* position: relative; */
 
     @media (max-width: 1010.98px) {
         flex-direction: column;
     }
 `
 
-const Container = styled.form`
-    padding: 30px;
+const Container = styled.div`
     display: block !important;
+    padding: 30px;
 `
 
 const Layouts = ({ children }) => {

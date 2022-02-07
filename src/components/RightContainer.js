@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 const Nav = styled.nav`
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
     background: #F6BC4D;
     width: 590px;
-    height: 100vh;
+
+    // min-height 110vh allows this rightcontainer to take maximum height display screen
+    min-height: 100vh !important;
     top: 0;
     right: ${props => props.right || '0'};
     border-left: 6px solid #0375BB;
@@ -15,7 +18,7 @@ const Nav = styled.nav`
     transition: box-shadow .3s;
     
     :hover {
-    box-shadow: -10px 0 90px rgba(33, 33, 33, .4    );
+    box-shadow: -10px 0 90px rgba(33, 33, 33, 5.3);
     /* box-shadow: 0 0 70px rgba(33, 33, 33, .5); */
   }
 
@@ -39,7 +42,7 @@ const Span = styled.span`
     margin: 50px;
 `
 
-const RightNavbar = ({ right, children }) => {
+const RightContainer = ({ right, children }) => {
     return (
         <Nav right={right}>
             {children}
@@ -48,4 +51,4 @@ const RightNavbar = ({ right, children }) => {
     );
 };
 
-export default RightNavbar
+export default RightContainer
