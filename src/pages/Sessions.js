@@ -12,6 +12,7 @@ import moment from "moment";
 import "moment/locale/fr"
 
 const List = styled.div`
+
   margin-top: 22px;
   height: calc(100vh - 135px);
   overflow-y: scroll;

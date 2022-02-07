@@ -11,7 +11,7 @@ const modalStyle = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: '40%',
+    width: '26%',
     height: '300px',
     borderRadius: '20px'
     }
@@ -22,13 +22,13 @@ const Logos = styled.div`
     display : flex
 }
 
-button {
-  background-color: black;
-  color: white;
-  height: 30px;
-  width: 60px;
-  margin-left: 250px;
-}
+// button {
+//   background-color: black;
+//   color: white;
+//   height: 30px;
+//   width: 60px;
+//   margin-left: 250px;
+// }
 
 h2 {
   font-size: 20px;
@@ -61,7 +61,7 @@ const CreateWriteModal = ({ isOpen, onClose }) => {
     > 
     <Logos >
         <Logo><GrClose onClick={onClose} /></Logo>
-        <button className>save</button>
+        {/* <button className>Envoyer</button> */}
         </Logos>
      
       <CreateWriteForm
