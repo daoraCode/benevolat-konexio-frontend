@@ -9,6 +9,7 @@ import Sessions from "./pages/Sessions";
 import { ListSessionsContextProvider } from "./context/ListSessions";
 import { ListNewsContextProvider } from "./context/ListNews";
 import Profile from "./pages/Profile";
+import Mail from './pages/Mail';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
           <Route exact path="/home" element={<Home />} />
           <Route path="/messagerie" element ={<Messagerie />} />
+          <Route path="/mail" element ={<Mail />} />
           <Route path="/news" element ={<News />} />
           <Route exact path="/sessions" element={<Sessions />} />
           <Route path="/profile" element ={<Profile />} />

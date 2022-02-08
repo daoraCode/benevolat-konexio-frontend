@@ -6,6 +6,7 @@ import { Content } from '../components/styled-components/FormPage'
 import moment from "moment";
 import "moment/locale/fr";
 
+
 const Newnews = styled.div`
   display: flex;
 
