@@ -14,9 +14,6 @@ import Faq from "./pages/Faq";
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import { VolunteerContextProvider } from './contexts/Volunteer';
-
-import Error404 from "./pages/Error404"
-import Sessions from "./pages/Sessions";
 import Calendar from "./pages/Calendar";
 
 const App = () => {
