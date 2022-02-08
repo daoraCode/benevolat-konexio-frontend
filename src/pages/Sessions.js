@@ -7,9 +7,10 @@ import {
   Content,
   Container,
 } from "../components/styled-components/FormPage";
-import { ListSessionsContext } from "../context/ListSessions";
+import { ListSessionsContext } from "../contexts/ListSessions";
 import moment from "moment";
 import "moment/locale/fr"
+import { VolunteerContext } from '../contexts/Volunteer';
 
 const List = styled.div`
 
@@ -57,10 +58,26 @@ const CardInfo = styled.p`
 
 const Home = () => {
   const { sessions, getSessions } = useContext(ListSessionsContext);
+  const { user } = useContext(VolunteerContext)
 
   useEffect(() => {
     getSessions();
-  });
+  }, []);
+
+
+  if(!user) {
+    return (
+      <Container>
+      <Sidebar />
+      <Content>
+        <Title>Sessions</Title>
+        <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
+      </Content>
+    </Container>
+    )
+  }
+
+  console.log(user)
 
   return (
     <Container>

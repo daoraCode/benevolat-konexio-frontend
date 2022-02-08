@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Logo from '../images/konexio.png';
 
 import { Link } from "react-router-dom";
+import { VolunteerContext } from '../contexts/Volunteer';
 
 const Nav = styled.nav`
     padding: 0;
@@ -15,10 +16,6 @@ const Nav = styled.nav`
     position: relative;
     display: flex;
     flex-direction: column;
-
-    @media (min-height: 800px) {
-        height: 100%;
-    }
 `
 
 const Img = styled.img`
@@ -45,6 +42,8 @@ const H1 = styled.h1`
 `
 
 const Sidebar = () => {
+    const { logout } = useContext(VolunteerContext)
+
     return (
         <Nav>
             <Img src={Logo} />
@@ -63,6 +62,9 @@ const Sidebar = () => {
             <Link  to='/messagerie' className="link nav">
                 <H1>Messagerie</H1>
             </Link>
+            <div onClick={() => logout()} className="link nav">
+                <H1>Logout</H1>
+            </div>
         </Nav>
     );
 };
