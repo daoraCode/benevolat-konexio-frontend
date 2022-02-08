@@ -9,7 +9,7 @@ import Home from "./pages/Home"
 import Messagerie from './pages/Messagerie'
 import News from './pages/News'
 import Sessions from "./pages/Sessions"
-import Profile from "./pages/Profile"``
+import Profile from "./pages/Profile"
 import Faq from "./pages/Faq"
 import Login from './pages/Login'
 import Signup from './pages/Signup'
