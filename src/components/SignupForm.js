@@ -102,14 +102,15 @@ const SignupForm = props => {
                         placeholder="Prénom*"
                         name="firstName"
                         type="text"
-                        />
+                        autoFocus
+                    />
                     <InputComponentSmallWd
                         isInvalid={formik.errors.lastName}
                         onChange={formik.handleChange}
                         placeholder="Nom*"
                         name="lastName"
                         type="text"
-                        />
+                    />
                 </InputNameRowContainer>
                 <InputComponentLargeWd
                     isInvalid={formik.errors.businessName}
@@ -117,35 +118,35 @@ const SignupForm = props => {
                     placeholder="Entreprise / Métier"
                     name="businessName"
                     type="text"
-                    />
+                />
                 <InputComponentLargeWd
                     isInvalid={formik.errors.email}
                     onChange={formik.handleChange}
                     placeholder="Adresse e-mail*"
                     name="email"
                     type="text"
-                    />
+                />
                 <InputComponentLargeWd
                     isInvalid={formik.errors.telephone}
                     onChange={formik.handleChange}
                     placeholder="Numéro de téléphone*"
                     name="telephone"
                     type="text"
-                    />
+                />
                 <InputComponentLargeWd
                     isInvalid={formik.errors.password}
                     onChange={formik.handleChange}
                     placeholder="Mot de passe*"
                     name="password"
                     type="password"
-                    />
+                />
                 <InputComponentLargeWd
                     isInvalid={formik.errors.passwordConfirmation}
                     onChange={formik.handleChange}
                     placeholder="Confirmation du mot de passe*"
                     name="passwordConfirmation"
                     type="password"
-                    />
+                />
                 <Span>Décrivez-nous comment vous avez connu Konexio :</Span>
                 <TextAreaComponent placeholder="Décrire" />
 
@@ -153,7 +154,7 @@ const SignupForm = props => {
                     type='submit'
                     label="Confirmer"
                     hover
-                    />
+                />
             </Form>
         </>
     )

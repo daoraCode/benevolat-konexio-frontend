@@ -1,24 +1,20 @@
 import React, { useContext } from 'react'
 
 // react-router-dom
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // styles
 import styled from 'styled-components'
 
 // components
 import Layouts from '../components/Layouts'
-import InputComponentLargeWd from '../components/InputComponentLargeWd'
-import ButtonComponent from '../components/ButtonComponent'
 import RightContainer from '../components/RightContainer'
+import ButtonComponent from '../components/ButtonComponent'
 
-// formik npm
-import { useFormik } from "formik"
-// yup npm
-import * as Yup from 'yup'
 
 // context
 import { VolunteerContext } from '../contexts/Volunteer'
+import LoginForm from '../components/LoginForm'
 
 
 const RowDisplay = styled.div`
@@ -33,15 +29,6 @@ const RowDisplay = styled.div`
 const MainContainer = styled.div`
     flex: 1; // allow to display all the rest of width necessary
     margin-top: 60px;
-`
-
-const LoginForm = styled.form`
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    margin-bottom: 30px;
 `
 
 // container set in flex-direction-column
@@ -96,50 +83,8 @@ const ContainerTitle = styled.div`
 
 const Login = () => {
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const { setUser, setConnected } = useContext(VolunteerContext)
-
-    const formik = useFormik({
-        initialValues: {
-            email: "",
-            password: "",
-        },
-        onSubmit: values => {
-            loginVolunteer(values)
-        },
-        validateOnChange: false,
-        validationSchema: Yup.object({
-            email: Yup.string().required("Adresse e-mail est requise."),
-            password: Yup.string().required("Mot de passe requis.")
-        })
-    })
-
-    const loginVolunteer = async values => {
-        const response = await fetch('http://localhost:5000/auth/login/volunteer', {
-            method: 'post',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify(values)
-        })
-
-        const data = await response.json()
-
-        setUser(data)
-
-        if (response.error) {
-            alert(response.error)
-            return
-        }
-
-        if (response.status >= 400) {
-            alert(response.statusText)
-        } else {
-            console.log('Volunteer have been connnected', response)
-            // navigate('/login')
-        }
-    }
 
     return (
         <RowDisplay>
@@ -147,27 +92,7 @@ const Login = () => {
                 <ClContainer>
                     <MainContainer>
                         <MainTitle>Déjà inscrit.e ? Connectez-vous avec votre profil :</MainTitle>
-                        <LoginForm onSubmit={formik.handleSubmit}>
-                            <InputComponentLargeWd
-                                isInvalid={formik.errors.email}
-                                onChange={formik.handleChange}
-                                placeholder="Adresse e-mail" 
-                                name="email" 
-                                type="text" 
-                            />
-                            <InputComponentLargeWd
-                                isInvalid={formik.errors.password}
-                                onChange={formik.handleChange}
-                                placeholder="Mot de passe" 
-                                name="password" 
-                                type="password" 
-                            />
-                            <ButtonComponent 
-                                type="submit" 
-                                label="Se connecter" 
-                                hover 
-                            />
-                        </LoginForm>
+                        <LoginForm />
                     </MainContainer>
                 </ClContainer>
             </Layouts>
