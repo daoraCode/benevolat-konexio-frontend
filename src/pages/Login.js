@@ -94,7 +94,7 @@ const ContainerTitle = styled.div`
 `
 
 
-const Login = props => {
+const Login = () => {
 
     const navigate = useNavigate()
     const { setUser, setConnected } = useContext(VolunteerContext)
@@ -127,7 +127,6 @@ const Login = props => {
         const data = await response.json()
 
         setUser(data)
-        setConnected(true)
 
         if (response.error) {
             alert(response.error)
@@ -137,8 +136,8 @@ const Login = props => {
         if (response.status >= 400) {
             alert(response.statusText)
         } else {
-            console.log('141', response)
-            navigate('/login')
+            console.log('Volunteer have been connnected', response)
+            // navigate('/login')
         }
     }
 

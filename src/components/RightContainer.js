@@ -18,7 +18,7 @@ const Nav = styled.nav`
     transition: box-shadow .3s;
     
     :hover {
-    box-shadow: -10px 0 90px rgba(33, 33, 33, 5.3);
+    box-shadow: -10px 0 90px rgba(33, 33, 33, 2.3);
     /* box-shadow: 0 0 70px rgba(33, 33, 33, .5); */
   }
 

@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Btn = styled.button`
-    color: #FFF;
+    color: #16A8E0;
     margin: 63px;
     border-radius: 81px;
     border-style: none;
-    background: ${props => props.background || '#16A8E0'};
+    background: ${props => props.background || '#0B5074'};
     font-size: 30px;
     font-weight: 700;
     line-height: 45px;
@@ -15,14 +15,16 @@ const Btn = styled.button`
     width: 315px;
     align-items: center;
     align-self: center;
+    transition: .28s ease-in-out 0s;
 
     ${props => {
     if (props.hover) {
       return (
         `&:hover {
-          color: #16A8E0;
-          background-color: white;
-          border: 3px solid #16A8E0;
+          color: #FFFFFF;
+          background-color: #0B5074;
+          cursor: pointer;
+          transform: scale(1.09);
         }`
       )
     }
