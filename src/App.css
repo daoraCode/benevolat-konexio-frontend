@@ -3,7 +3,7 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
-} 
+}
 
 .link {
   text-decoration: none;
@@ -20,4 +20,13 @@
 
 .link-card {
   color: black;
+}
+
+.current p {
+  color: #000000;
+}
+
+.selected p {
+  color: #0375BB;
+  font-weight: bold;
 }

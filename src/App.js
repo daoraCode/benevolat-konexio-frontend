@@ -8,7 +8,6 @@ import Error404 from "./pages/Error404"
 import Home from "./pages/Home"
 import Messagerie from './pages/Messagerie'
 import News from './pages/News'
-import Sessions from "./pages/Sessions"
 import Profile from "./pages/Profile"
 import Faq from "./pages/Faq"
 import Login from './pages/Login'
@@ -18,6 +17,9 @@ import Mail from './pages/Mail'
 import { ListSessionsContextProvider } from "./contexts/ListSessions"
 import { ListNewsContextProvider } from "./contexts/ListNews"
 import { VolunteerContextProvider } from './contexts/Volunteer'
+
+import Sessions from "./pages/Sessions";
+import Calendar from "./pages/Calendar";
 
 const App = () => {
   return (
@@ -33,6 +35,7 @@ const App = () => {
               <Route path="/messagerie" element={<Messagerie />} />
               <Route path="/news" element={<News />} />
               <Route exact path="/sessions" element={<Sessions />} />
+              <Route path="/sessions/:id_session" element={<Calendar />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/faq" element={<Faq />} />
               <Route path="*" element={<Error404 />} />
