@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react"
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import {
@@ -7,9 +6,10 @@ import {
   Content,
   Container,
 } from "../components/styled-components/FormPage";
-import { ListSessionsContext } from "../contexts/ListSessions";
+import CardSession from "../components/CardSession";
+import { ListSessionsContext } from "../context/ListSessions";
 import moment from "moment";
-import "moment/locale/fr"
+import "moment/locale/fr";
 import { VolunteerContext } from '../contexts/Volunteer';
 
 const List = styled.div`
@@ -32,28 +32,6 @@ const List = styled.div`
     background: #0375bb;
     border-radius: 9999px;
   }
-`;
-
-const CardSessions = styled.div`
-  /* background-color: #e9e9e9; */
-  padding: 15px 20px;
-  border-radius: 28px;
-  margin-bottom: 20px;
-  margin-right: 10px;
-  color: black;
-
-  &:hover {
-    background-color: ${(props) =>
-      props.session === "DigitAll" ? "#F6BC4D" : "#16A8E0"};
-  }
-`;
-
-const CardTitle = styled.p`
-  font-size: 28px;
-`;
-
-const CardInfo = styled.p`
-  font-size: 16px;
 `;
 
 const Home = () => {
@@ -88,22 +66,21 @@ const Home = () => {
           {sessions &&
             sessions.length > 0 &&
             sessions.map((session) => {
-              const { program, numberOfPlace, adress, startDate, endDate } = session
-              const start = moment(startDate).locale("fr").format("DD MMMM")
-              const end = moment(endDate).locale("fr").format("DD MMMM")
+              const { program, numberOfPlace, adress, startDate, endDate } =
+                session;
+              const start = moment(startDate).locale("fr").format("DD MMMM");
+              const end = moment(endDate).locale("fr").format("DD MMMM");
               return (
-                <CardSessions session={program.name} key={session._id}>
-                  <Link to="/" className="link link-card">
-                    <CardTitle>
-                      {start} - {end}
-                    </CardTitle>
-                    <CardInfo>
-                      Places disponibles: {numberOfPlace}
-                    </CardInfo>
-                    <CardInfo>Lieu: {adress}</CardInfo>
-                    <CardInfo>Sessions: {program.name}</CardInfo>
-                  </Link>
-                </CardSessions>
+                <CardSession
+                  site='sessions'
+                  key={session._id} 
+                  programName={program.name} 
+                  sessionId={session._id}
+                  start={start}
+                  end={end}
+                  numberOfPlace={numberOfPlace}
+                  adress={adress}
+                />
               );
             })}
         </List>

@@ -13,7 +13,7 @@ const Nav = styled.nav`
     left: 0;
     width: 390px;
     height: 100vh;
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
 `
@@ -47,8 +47,8 @@ const Sidebar = () => {
     return (
         <Nav>
             <Img src={Logo} />
-            <Link to='/home' className="link nav">
-                <H1>Session</H1>
+            <Link to='/sessions' className="link nav">
+                <H1>Sessions</H1>
             </Link>
             <Link to='/profile' className="link nav">
                 <H1>Profile</H1>
@@ -57,10 +57,13 @@ const Sidebar = () => {
                 <H1>News</H1>
             </Link>
             <Link to='/' className="link nav">
-                <H1>F.A.Q</H1>
-            </Link>
-            <Link  to='/messagerie' className="link nav">
                 <H1>Messagerie</H1>
+            </Link>
+            <Link to='/' className="link nav">
+                <H1>Profil</H1>
+            </Link>
+            <Link to='/' className="link nav">
+                <H1>F.A.Q</H1>
             </Link>
             <div onClick={() => logout()} className="link nav">
                 <H1>Logout</H1>
