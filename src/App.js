@@ -1,18 +1,22 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Error404 from "./pages/Error404";
-import Home from "./pages/Home";
-import { ListSessionsContextProvider } from "./context/ListSessions";
-import Messagerie from './pages/Messagerie';
-import News from './pages/News';
-import Sessions from "./pages/Sessions";
-import { ListNewsContextProvider } from "./context/ListNews";
-import Profile from "./pages/Profile";
-import Faq from "./pages/Faq";
+import React from "react"
+
+import "./App.css"
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Error404 from "./pages/Error404"
+import Home from "./pages/Home"
+import Messagerie from './pages/Messagerie'
+import News from './pages/News'
+import Sessions from "./pages/Sessions"
+import Profile from "./pages/Profile"
+import Faq from "./pages/Faq"
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import { VolunteerContextProvider } from './contexts/Volunteer';
+
+import { ListSessionsContextProvider } from "./contexts/ListSessions"
+import { ListNewsContextProvider } from "./contexts/ListNews"
+import { VolunteerContextProvider } from './contexts/Volunteer'
 
 const App = () => {
   return (
@@ -35,7 +39,7 @@ const App = () => {
         </ListNewsContextProvider>
       </ListSessionsContextProvider>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

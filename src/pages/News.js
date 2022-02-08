@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import Sidebar from "../components/Sidebar";
-import styled from "styled-components";
-import { ListNewsContext } from "../context/ListNews";
+import React, { useContext, useEffect } from "react"
+import Sidebar from "../components/Sidebar"
+import styled from "styled-components"
+import { ListNewsContext } from "../contexts/ListNews"
 import { Content } from '../components/styled-components/FormPage'
-import moment from "moment";
-import "moment/locale/fr";
+import moment from "moment"
+import "moment/locale/fr"
 
 const Newnews = styled.div`
   display: flex;
