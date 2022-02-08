@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Error404 from "./pages/Error404";
-import Home from "./pages/Home";
 import { ListSessionsContextProvider } from "./contexts/ListSessions";
 import Messagerie from './pages/Messagerie';
 import News from './pages/News';
@@ -23,7 +22,6 @@ const App = () => {
         <ListNewsContextProvider>
           <VolunteerContextProvider>
             <Routes>
-              <Route exact path="/home" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/messagerie" element={<Messagerie />} />

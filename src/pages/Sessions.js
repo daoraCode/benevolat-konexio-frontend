@@ -7,7 +7,7 @@ import {
   Container,
 } from "../components/styled-components/FormPage";
 import CardSession from "../components/CardSession";
-import { ListSessionsContext } from "../context/ListSessions";
+import { ListSessionsContext } from "../contexts/ListSessions";
 import moment from "moment";
 import "moment/locale/fr";
 import { VolunteerContext } from '../contexts/Volunteer';
@@ -34,7 +34,7 @@ const List = styled.div`
   }
 `;
 
-const Home = () => {
+const Sessions = () => {
   const { sessions, getSessions } = useContext(ListSessionsContext);
   const { user } = useContext(VolunteerContext)
 
@@ -89,4 +89,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Sessions;

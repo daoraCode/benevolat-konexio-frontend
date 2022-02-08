@@ -22,7 +22,7 @@ import Sidebar from "../components/Sidebar";
 import CardSession from "../components/CardSession";
 import CalendarComponent from "../components/CalendarComponent";
 
-import { ListSessionsContext } from "../context/ListSessions";
+import { ListSessionsContext } from "../contexts/ListSessions";
 import { useState } from "react/cjs/react.development";
 
 const months = [
