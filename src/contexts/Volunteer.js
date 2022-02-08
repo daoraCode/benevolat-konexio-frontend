@@ -8,7 +8,7 @@ const VolunteerContextProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const [ volunteer, setVolunteer ] = useState({})
-  const [ user, setUser ] = useState([])
+  const [ user, setUser ] = useState(null)
 
 
   const signup = async values => {
@@ -59,12 +59,35 @@ const VolunteerContextProvider = ({ children }) => {
     setUser(loginData)
   }
 
+  const logout = async () => {
+    const response = await fetch(`http://localhost:5000/auth/logout`, {
+      credentials: 'include',
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if(response.error) {
+      alert(response.error)
+      return
+    }
+    if(response.status >= 400) {
+      alert(response.statusText)
+      return
+    }
+
+    setUser(null)
+    navigate('/login')
+  }
+
   const value = {
     volunteer,  
     setVolunteer,
     user,
     setUser,
-    signup
+    signup,
+    logout
   }
 
   return (
