@@ -6,7 +6,7 @@ const Btn = styled.button`
     margin: 63px;
     border-radius: 81px;
     border-style: none;
-    background: #16A8E0;
+    background: ${props => props.background || '#16A8E0'};
     font-size: 30px;
     font-weight: 700;
     line-height: 45px;
@@ -29,12 +29,13 @@ const Btn = styled.button`
   }}
 `
 
-const ButtonComponent = ({ hover, onClick, type, label }) => {
+const ButtonComponent = ({ hover, onClick, type, label, background }) => {
     return (
         <Btn
             hover={hover}
             onClick={onClick}
             type={type}
+            background={background}
         >
             {label}      
         </Btn>

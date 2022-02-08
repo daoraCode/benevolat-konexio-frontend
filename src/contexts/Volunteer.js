@@ -1,32 +1,70 @@
 import { createContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const VolunteerContext = createContext({})
 
 const VolunteerContextProvider = ({ children }) => {
-  
-  const [ user, setUser ] = useState({})
-  const [ connected, setConnected ] = useState(false)
-  const [ users, setUsers ] = useState([])
+
+  const navigate = useNavigate()
+
+  const [ volunteer, setVolunteer ] = useState({})
+  const [ user, setUser ] = useState([])
 
 
-  const getVolunteers = async () => {
-    const response = await fetch('http://localhost:5000/users/volunteers', {
-      credentials: 'include'
+  const signup = async values => {
+    const signupResponse = await fetch('http://localhost:5000/auth/signup', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        businessName: values.businessName,
+        telephone: values.telephone,
+        password: values.password,
+      })
     })
 
-    const data = await response.json()
+    const volunteer = await signupResponse.json()
 
-    setUser(data)
+    if (volunteer.error) {
+      alert(volunteer.error)
+      return
+    }
+
+    const loginResponse = await fetch('http://localhost:5000/auth/login/volunteer', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        email: volunteer.email,
+        password: volunteer.password
+      })
+    })
+
+    const loginData = await loginResponse.json()
+
+    if (loginResponse.status >= 400) {
+      alert(loginResponse.statusText)
+    } else {
+      navigate('/login')
+      console.log(loginResponse)
+    }
+    
+    setUser(loginData)
   }
 
   const value = {
+    volunteer,  
+    setVolunteer,
     user,
     setUser,
-    connected,
-    setConnected,
-    users,
-    setUsers,
-    getVolunteers
+    signup
   }
 
   return (

@@ -31,9 +31,10 @@ const Input = styled.input`
     }
 `
 // Second Input large version
-const InputComponentLargeWd = ({ name, placeholder, type, value, width }) => {
+const InputComponentLargeWd = ({ name, placeholder, type, value, width, onChange }) => {
     return (
         <Input
+           onChange={onChange}
            placeholder={placeholder}
            name={name}
            type={type}

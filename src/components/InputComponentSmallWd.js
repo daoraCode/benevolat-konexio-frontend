@@ -33,14 +33,15 @@ const Input = styled.input`
 
 
 // Second Input small version
-const InputComponentSmallWd = ({ name, placeholder, type, value, width }) => {
+const InputComponentSmallWd = ({ name, placeholder, type, value, width, onChange }) => {
     return (
         <Input
-           placeholder={placeholder}
-           name={name}
-           type={type}
-           value={value}
-           width={width}
+            onChange={onChange}
+            placeholder={placeholder}
+            name={name}
+            type={type}
+            value={value}
+            width={width}
         />
     )
 }
