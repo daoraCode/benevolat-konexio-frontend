@@ -22,12 +22,12 @@ const App = () => {
         <ListNewsContextProvider>
           <VolunteerContextProvider>
             <Routes>
-              <Route path="/login" element={<Login />} />
+              <Route exact path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/messagerie" element={<Messagerie />} />
               <Route path="/mail" element={<Mail />} />
               <Route path="/news" element={<News />} />
-              <Route exact path="/sessions" element={<Sessions />} />
+              <Route path="/sessions" element={<Sessions />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/sessions/:id_session" element={<Calendar />} />
               <Route path="/faq" element={<Faq />} />

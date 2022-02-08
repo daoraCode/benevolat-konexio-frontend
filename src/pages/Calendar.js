@@ -24,6 +24,7 @@ import CalendarComponent from "../components/CalendarComponent";
 
 import { ListSessionsContext } from "../contexts/ListSessions";
 import { useState } from "react/cjs/react.development";
+import { VolunteerContext } from "../contexts/Volunteer";
 
 const months = [
   "Jan",
@@ -55,6 +56,7 @@ const MonthText = styled.div`
 `;
 const Calendar = () => {
   const { id_session } = useParams();
+  const { user } = useContext(VolunteerContext)
   const { getSession, session } = useContext(ListSessionsContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [dates, setDates] = useState([]);
@@ -66,6 +68,7 @@ const Calendar = () => {
   useEffect(() => {
     getSession(id_session);
   }, []);
+  
 
   const getCalendar = () => {
     setCalendar({
@@ -129,6 +132,18 @@ const Calendar = () => {
   const onSelectDate = (date) => {
     setSelectedDate(new Date(date.year, date.month, date.date));
   };
+
+  if (!user) {
+    return (
+      <Container>
+        <Sidebar />
+        <Content>
+          <Title>Sessions</Title>
+          <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
+        </Content>
+      </Container>
+    );
+  }
 
   // console.log(calendar)
   // console.log(dates)
