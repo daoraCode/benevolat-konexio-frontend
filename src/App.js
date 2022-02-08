@@ -14,6 +14,7 @@ import Faq from "./pages/Faq";
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import { VolunteerContextProvider } from './contexts/Volunteer';
+import Calendar from "./pages/Calendar";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/messagerie" element={<Messagerie />} />
               <Route path="/mail" element={<Mail />} />
               <Route path="/news" element={<News />} />
+              <Route path="/calendar" element={<Calendar />} />
               <Route exact path="/sessions" element={<Sessions />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/faq" element={<Faq />} />
