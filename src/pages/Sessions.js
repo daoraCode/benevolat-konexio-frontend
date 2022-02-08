@@ -8,15 +8,10 @@ import {
 } from "../components/styled-components/FormPage";
 import { ListSessionsContext } from "../contexts/ListSessions";
 import moment from "moment";
-<<<<<<< HEAD
-import "moment/locale/fr";
-import { VolunteerContext } from "../contexts/Volunteer";
-=======
 import "moment/locale/fr"
 import { VolunteerContext } from '../contexts/Volunteer';
 import CardSession from "../components/CardSession";
 
->>>>>>> 3a299e1e22466ff56e075eebec7ae09e64673da9
 
 const List = styled.div`
   margin-top: 22px;
