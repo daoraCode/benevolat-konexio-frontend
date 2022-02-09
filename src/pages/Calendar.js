@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/fr";
 import { datesGenerator } from "dates-generator";
-// import Calendar from 'react-calendar';
-// import "react-calendar/dist/Calendar.css";
 
 import {
   MdOutlineKeyboardArrowLeft,
@@ -86,10 +84,7 @@ const Calendar = () => {
   const { getSession, session, bookDay } = useContext(ListSessionsContext);
   // const [selectedDate, setSelectedDate] = useState();
   const [dates, setDates] = useState([]);
-  const [calendar, setCalendar] = useState({
-    // month: selectedDate.getMonth(),
-    // year: selectedDate.getFullYear(),
-  });
+  const [calendar, setCalendar] = useState({});
 
   useEffect(() => {
     getSession(id_session);
@@ -97,7 +92,6 @@ const Calendar = () => {
 
   useEffect(() => {
     if (session) {
-      // setSelectedDate(new Date(session.startDate));
       getCalendar();
     }
   }, [session]);
@@ -157,7 +151,6 @@ const Calendar = () => {
   };
 
   const onSelectDate = (date) => {
-    // setSelectedDate(new Date(date.year, date.month, date.date));
     bookDay(date, user._id, session._id);
   };
 
@@ -258,7 +251,6 @@ const Calendar = () => {
                         dates.map((week) => (
                           <tr key={JSON.stringify(week[0])}>
                             {week.map((each) => {
-                              // console.log(session);
                               return (
                                 <td
                                   key={JSON.stringify(each)}
@@ -277,16 +269,7 @@ const Calendar = () => {
                                         ).format("YYYY-MM-DD")
                                       )
                                     }
-                                    className={session.days.find((day) => moment(day.date).format("YYYY-MM-DD") === moment(`${each.year}-${each.month + 1}-${each.date}`).format("YYYY-MM-DD") && day.users.find(userDay => userDay === user._id) === user._id) && 'selected'}
-                                    // className={session.days.find((day) => console.log('day.date:', moment(day.date).format("YYYY-MM-DD"), '- each:', moment(`${each.year}-${each.month}-${each.date}`).format("YYYY-MM-DD"), '- day.user: ', day.user, '- userId: ', user._id))}
-                                    className={
-                                      session.days.find((day) => 
-                                      console.log('- day.user: ', day.users.find(userDay => 
-                                        {
-                                          console.log('userDay: ', userDay)
-                                        }
-                                      ))
-                                      )}
+                                    className={session.days.find((day) => moment(day.date).format("YYYY-MM-DD") === moment(`${each.year}-${each.month + 1}-${each.date}`).format("YYYY-MM-DD") && day.users.find(userDay => userDay === user._id)) && 'selected'}
                                   >
                                     <NumberDay>{each.date}</NumberDay>
                                     {session.days.find((day) => moment(day.date).format("YYYY-MM-DD") === moment(`${each.year}-${each.month + 1}-${each.date}`).format("YYYY-MM-DD") && day.users.find(userDay => userDay._id === user._id)) && <p>{user.lastName} {user.firstName}</p>}
@@ -300,9 +283,6 @@ const Calendar = () => {
                   </table>
                 </div>
               </div>
-              {/* <div style={{ padding: 10 }}>
-                Selected Date: {selectedDate.toLocaleString()}
-              </div> */}
             </ContainerCalendar>
             </div>
             <div style={{ height: 40 }}></div>
