@@ -52,7 +52,6 @@ const VolunteerContextProvider = ({ children }) => {
     if (loginResponse.status >= 400) {
       alert(loginResponse.statusText)
     } else {
-      navigate('/login')
       console.log(loginResponse)
     }
     

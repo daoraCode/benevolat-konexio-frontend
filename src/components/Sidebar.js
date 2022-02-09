@@ -56,17 +56,10 @@ const Sidebar = () => {
             <Link to='/news' className="link nav">
                 <H1>News</H1>
             </Link>
-<<<<<<< HEAD
             <Link to='/messagerie' className="link nav">
                 <H1>Messagerie</H1>
             </Link>
-            <Link to='/faq' className="link nav">
-=======
-            <Link to='/' className="link nav">
-                <H1>Profil</H1>
-            </Link>
-            <Link to='/' className="link nav">
->>>>>>> 3a299e1e22466ff56e075eebec7ae09e64673da9
+                    <Link to='/faq' className="link nav">
                 <H1>F.A.Q</H1>
             </Link>
             <div onClick={() => logout()} className="link nav">
