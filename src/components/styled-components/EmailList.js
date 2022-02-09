@@ -15,7 +15,7 @@ const List = styled.div`
     margin-top: 30px;
     border: solid 1px grey;
      scrollbar-width: thin; 
-     : 50px; 
+    //  : 50px; 
      scrollbar-color: #16A8E0; 
     height: 318px;
 }
