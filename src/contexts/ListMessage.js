@@ -21,9 +21,9 @@ const ListMessageContextProvider = ({children}) => {
   }
 
   return (
-    <ListNewsContext.Provider value={value}>
+    <ListMessageContext.Provider value={value}>
       {children}
-    </ListNewsContext.Provider>
+    </ListMessageContext.Provider>
   )
 }
 

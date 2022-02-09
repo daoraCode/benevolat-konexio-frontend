@@ -11,7 +11,7 @@ import Profile from "./pages/Profile";
 import Mail from './pages/Mail';
 import Faq from "./pages/Faq";
 import Login from './pages/Login'
-import Signup from './pages/Signup'
+import Signup from './pages/SignUp'
 import { VolunteerContextProvider } from './contexts/Volunteer';
 import Calendar from "./pages/Calendar";
 

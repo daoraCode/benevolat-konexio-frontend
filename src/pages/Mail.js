@@ -4,13 +4,15 @@ import styled from 'styled-components';
 import { FaReply } from 'react-icons/fa'
 import { MdOutlineArrowLeft } from 'react-icons/md'
 import { VolunteerContext } from '../contexts/Volunteer';
-import { Content, Container, Title } from '../components/styled-components/FormPage'
+import { Content, Title } from '../components/styled-components/FormPage'
 import Sidebar from '../components/Sidebar';
+import CreateToRespondModal from "../modals/CreateToRespondModal";
+import { useState } from "react";
 
-// const Container = styled.div`
-// height: 100vh;
-// margin: 50px;
-// `
+const Container = styled.div`
+height: 100vh;
+margin: 50px;
+`
 
 const ButtonBack = styled.button`
 background: white;
@@ -62,18 +64,19 @@ padding: 80px;
 
 const Mail = () => {
     const { user } = useContext(VolunteerContext)
+    const [createToRespondModalVisible, setCreateToRespondModalVisible] = useState(false);
 
-    if (!user) {
-        return (
-          <Container>
-            <Sidebar />
-            <Content>
-              <Title>Sessions</Title>
-              <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
-            </Content>
-          </Container>
-        );
-      }
+    // if (!user) {
+    //     return (
+    //       <Container>
+    //         <Sidebar />
+    //         <Content>
+    //           <Title>Sessions</Title>
+    //           <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
+    //         </Content>
+    //       </Container>
+    //     );
+    //   }
 
     return (
         <Container>
@@ -89,9 +92,13 @@ const Mail = () => {
                 <Sender>Sender / Date</Sender>
                 <EmailContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu nisl non nisi consectetur porta. Sed ac dolor ac sapien imperdiet interdum. Aliquam quis ligula viverra, volutpat augue vel, commodo mauris. Donec eu tellus tellus. Etiam sit amet tincidunt mi. Nulla vel aliquet ante. In porta dolor eu semper facilisis. Quisque ut dolor congue, mollis mauris sed, semper velit. Donec eget velit leo. Fusce accumsan ultrices placerat. Proin aliquet purus non ante molestie, ac pulvinar nunc lobortis. Integer ac dui eleifend, lacinia risus sed, varius purus. Sed consequat a diam vitae commodo.Nunc ullamcorper mollis neque non interdum. Nam elementum elementum tortor eget tincidunt. Integer metus nisi, dignissim a euismod at, dapibus at elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed varius molestie risus, sit amet finibus felis egestas non. Nullam laoreet, arcu ut consequat viverra, nunc odio euismod felis, sit amet tincidunt mi enim efficitur quam. Vivamus commodo consequat ante at dictum. Vestibulum feugiat dui velit. Aliquam erat volutpat. Donec ut lacus dolor. Cras in erat commodo, dapibus mi sit amet, tristique erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vitae suscipit nunc. Proin varius felis velit, sit amet euismod lorem dictum ac. Proin suscipit sapien in lectus fermentum, vel mattis ante ornare.</EmailContent>
                 <ButtonDiv>
-                    <ButtonReply> <FaReply /> Réspondre</ButtonReply>
+                    <ButtonReply onClick={() => setCreateToRespondModalVisible(true)}><FaReply /> Répondre</ButtonReply>
                 </ButtonDiv>
             </div>
+            <CreateToRespondModal
+        isOpen={createToRespondModalVisible}
+        onClose={() => setCreateToRespondModalVisible(false)}
+      />
 
         </Container>
     );

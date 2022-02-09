@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import EmailRow from './EmailRow';
+import EmailRow from './EmailRow'
 // import { ListMessageContext } from "./context/ListMessage";
 // import moment from "moment";
 // import "moment/locale/fr";
@@ -10,14 +10,14 @@ const List = styled.div`
 .emailList {
     flex: 1;
     overflow-y: scroll;
-    width: 990px;
+    width: 95%;
     margin-left: 50px;
     margin-top: 30px;
     border: solid 1px grey;
-    /* scrollbar-width: thin; */
-    /* : 50px; */
-    /* scrollbar-color: #16A8E0; */
-    height: 450px
+     scrollbar-width: thin; 
+    //  : 50px; 
+     scrollbar-color: #16A8E0; 
+    height: 318px;
 }
 
 /* .emailList:hover{
