@@ -45,8 +45,9 @@ const Info = styled.div`
     font-size: 20px;
     color: white;
     border: none;
-    width: 100px;
+    width: 120px;
     height: 40px;
+    margin-right: 50px;
   }
 
   .paragraphe1 {

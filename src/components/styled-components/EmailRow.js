@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom"
+import { ListMessageContext } from "../../contexts/ListMessage";
+import { VolunteerContext } from "../../contexts/Volunteer";
+import moment from "moment";
+import "moment/locale/fr";
 
 
 const Row = styled.div`
@@ -56,8 +60,20 @@ const Row = styled.div`
 
 const EmailRow = ({id, title, subject, description, time,}) => {
     const navigate = useNavigate(); 
-    
+    const { message, getMessage } = useContext(ListMessageContext);
+    const { user } = useContext(VolunteerContext);
+
+    // useEffect(() => {
+    //     getMessage();
+    //   }, []);
+
+    // if (!user) {
+    //     {message.map((message) => {
+    //         const { title, contents, createdAt, updatedAt } = message;
+    //         const created = moment(createdAt).locale("fr").format("llll");
+    //         const updated = moment(updatedAt).locale("fr").format("llll");
     return (
+        
         <Row>
         <div onClick={() => navigate('/mail')} className="emailRow">
             <div className="emailRowOptions">
@@ -83,6 +99,10 @@ const EmailRow = ({id, title, subject, description, time,}) => {
         </div>
         </Row>
     );
-};
+        
+ }
+        // )}
+        // }}
+
 
 export default EmailRow;

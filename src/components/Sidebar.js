@@ -60,10 +60,7 @@ const Sidebar = () => {
                 <H1>Messagerie</H1>
             </Link>
             {/* <Link to='/faq' className="link nav"> */}
-            <Link to='/' className="link nav">
-                <H1>Profil</H1>
-            </Link>
-            <Link to='/' className="link nav">
+            <Link to='/faq' className="link nav">
                 <H1>F.A.Q</H1>
             </Link>
             <div onClick={() => logout()} className="link nav">

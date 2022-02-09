@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
+
 import EmailList from "../components/styled-components/EmailList";
 import EmailRow from "../components/styled-components/EmailRow";
 import { Content, Container, Title } from '../components/styled-components/FormPage'
+
 
 import { HiPencilAlt } from "react-icons/hi";
 import { RiMailSendFill } from "react-icons/ri";
@@ -13,6 +15,7 @@ import { useState } from "react";
 import CreateWriteModal from "../modals/CreateWriteModal";
 import { VolunteerContext } from "../contexts/Volunteer";
 // import CreateWriteForm from '../modals/CreateWriteForm';
+
 
 const ContainerM = styled.div`
   display: flex;
@@ -83,6 +86,7 @@ const ContainerM = styled.div`
     padding-left: 290px;
   }
 `;
+
 const Messagerie = () => {
   const [createWriteModalVisible, setCreateWriteModalVisible] = useState(false);
   const { user } = useContext(VolunteerContext)
@@ -124,6 +128,8 @@ const Messagerie = () => {
             <p className="Tienvoyés">Envoyés</p>
             <p className="Tiecrire">Ecrire</p>
           </div>
+        
+          {/* <EmailRow /> */}
           <EmailList />
         </div>
       </Content>
@@ -135,4 +141,4 @@ const Messagerie = () => {
   );
 };
 
-export default Messagerie;
+export default Messagerie
