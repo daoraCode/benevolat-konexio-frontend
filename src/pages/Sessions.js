@@ -8,8 +8,8 @@ import {
 } from "../components/styled-components/FormPage";
 import { ListSessionsContext } from "../contexts/ListSessions";
 import moment from "moment";
-import "moment/locale/fr";
-import { VolunteerContext } from "../contexts/Volunteer";
+import "moment/locale/fr"
+import { VolunteerContext } from '../contexts/Volunteer';
 import CardSession from "../components/CardSession";
 
 
