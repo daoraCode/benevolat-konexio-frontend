@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useContext } from "react";
 import styled from "styled-components";
-import EmailRow from './EmailRow'
+import { ListMessageContext } from "../../contexts/ListMessage";
+import { VolunteerContext } from "../../contexts/Volunteer";
+import EmailRow from "./EmailRow";
 // import { ListMessageContext } from "./context/ListMessage";
 // import moment from "moment";
 // import "moment/locale/fr";
 
-
 const List = styled.div`
-.emailList {
+  .emailList {
     flex: 1;
     overflow-y: scroll;
     width: 95%;
     margin-left: 50px;
     margin-top: 30px;
     border: solid 1px grey;
-     scrollbar-width: thin; 
-    //  : 50px; 
-     scrollbar-color: #16A8E0; 
+    scrollbar-width: thin;
+    //  : 50px;
+    scrollbar-color: #16a8e0;
     height: 318px;
-}
+  }
 
-/* .emailList:hover{
+  /* .emailList:hover{
     scrollbar-color: #0375BB;
 }
 
@@ -29,54 +30,97 @@ const List = styled.div`
 }
 
 /* Track */
-.emailList::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-} */
-
-.emailListSettings {
+  .emailList::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  */ .emailListSettings {
     // position: sticky;
     top: 0;
     display: flex;
     justify-content: space-between;
-    border-bottom: 4px solid #D3D5D5;
+    border-bottom: 4px solid #d3d5d5;
     z-index: 999;
     padding-right: 10px;
-}
+  }
 
-.checkbox {
+  .checkbox {
     margin-left: 20px;
-}
+  }
+`;
 
-`
+const EmailList = ({ filter }) => {
+  const { messages } = useContext(ListMessageContext);
+  const { user } = useContext(VolunteerContext)
 
-// const Message = () => {
-//     const { message, getMessage } = useContext(ListMessageContext);
-  
-//     useEffect(() => {
-//       getMessage();
-//     }, []);
+  if (!messages) return <p>chargement</p>
 
-//     if (message === null) return <p>chargement</p>;
+  return (
+    <List>
+      <div className="emailList">
+        <div className="emailListSettings">
+          <div className="emailListSettingsLeft">
+            <div className="checkbox">{/* <input type="checkbox"/> */}</div>
+            <div className="emailListSettingsRight"></div>
+          </div>
+        </div>
+        <div className="emailList_list">
 
-const EmailList = () => {
-    return (
-        <List>
-            {/* {message.map((message) => {
-        const { title, content, createdAt, updatedAt } = message;
-        const created = moment(createdAt).locale("fr").format("llll"); */}
-        <div className="emailList">
-            <div className="emailListSettings">
-                <div className="emailListSettingsLeft">
-                    <div className="checkbox">
-                    {/* <input type="checkbox"/> */}
-                </div>
-                     <div className="emailListSettingsRight">
-    
-                    </div>
-                </div>
-            </div>
-            <div className="emailList_list">
+          {filter === "none" && messages.map((message) => {
+            console.log(message);
+            const { from, object, createdAt, _id } = message;
+
+            return (
+              <EmailRow
+                key={_id}
+                from={from}
+                object={object}
+                date={createdAt}
+                messageId={_id}
+              />
+            );
+          })}
+
+          {filter === "none" && messages.map((message) => {
+            console.log(message);
+            const { from, object, createdAt, _id } = message;
+
+            return (
+              <EmailRow
+                key={_id}
+                from={from}
+                object={object}
+                date={createdAt}
+                messageId={_id}
+              />
+            );
+          })}
+          
+          {/* {filter === "sent" && messages.filter((message) => {
+            const { from, object, createdAt, _id } = message;
+
+            if (message.from === user._id) {
+              
+            }
+          })}
+
+          {filter === "received" && messages.map((message) => {
+            const { from, object, createdAt, _id } = message;
+
+            if (message.to === user._id) {
+              return (
+                <EmailRow
+                  key={_id}
+                  from={from}
+                  object={object}
+                  date={createdAt}
+                  messageId={_id}
+                />
+              )
+            }
+          })} */}
+
+          {/* 
                 <EmailRow 
                 title="Konexio"
                 subject="Cours annulé !"
@@ -88,63 +132,12 @@ const EmailList = () => {
                 subject="Cours annulé !"
                 description="Bonjour à tous le cours de demain skjdflkjsdflkjdslkfjldkjflsdkjflkdsjfldsjflksdjlk"
                 time="12:00" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="11:59" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="11:26" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="11:00" />
-
-<EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="10:50" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous le cours de demain skjdflkjsdflkjdslkfjldkjflsdkjflkdsjfldsjflksdjlk"
-                time="10:26" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="10:20" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="10:10" />
-
-                <EmailRow 
-                title="Konexio"
-                subject="Cours annulé !"
-                description="Bonjour à tous"
-                time="9:30" />
-
-                
-            </div>
+            */}
         </div>
-            {/* })} */}
-    
-        </List>
-    );
+      </div>
+      {/* })} */}
+    </List>
+  );
 };
-
 
 export default EmailList;

@@ -1,14 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
 
 import EmailList from "../components/styled-components/EmailList";
 import EmailRow from "../components/styled-components/EmailRow";
-import {
-  Content,
-  Container,
-  Title,
-} from "../components/styled-components/FormPage";
+import { Content, Container, Title } from '../components/styled-components/FormPage'
+
 
 import { HiPencilAlt } from "react-icons/hi";
 import { RiMailSendFill } from "react-icons/ri";
@@ -17,11 +14,9 @@ import { FaEnvelopeOpenText } from "react-icons/fa";
 import { useState } from "react";
 import CreateWriteModal from "../modals/CreateWriteModal";
 import { VolunteerContext } from "../contexts/Volunteer";
+import { useNavigate } from "react-router-dom"
 // import CreateWriteForm from '../modals/CreateWriteForm';
-import ReceivedMessage from "./ReceivedMessage";
-import SentMessage from "./SentMessage";
-import { useNavigate } from "react-router-dom";
-import { ListMessageContext } from "../contexts/ListMessage";
+
 
 const ContainerM = styled.div`
   display: flex;
@@ -32,6 +27,18 @@ const ContainerM = styled.div`
     margin-top: 20px;
     margin-left: 50px;
   }
+
+  .envoyés {
+    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+    background-color: #0375bb;
+    color: white;
+    margin-left: 65px;
+    margin-top: 30px;
+    font-size: 25px;
+  }
+
 
   .recu {
     border-radius: 100px;
@@ -44,24 +51,13 @@ const ContainerM = styled.div`
     font-size: 25px;
   }
 
-  .envoyés {
-    border-radius: 100px;
-    height: 50px;
-    width: 50px;
-    background-color: #0375bb;
-    color: white;
-    margin-left: 56px;
-    margin-top: 30px;
-    font-size: 25px;
-  }
-
   .ecrire {
     border-radius: 100px;
     height: 50px;
     width: 50px;
     background-color: #0375bb;
     color: white;
-    margin-left: 350px;
+    margin-left: 347px;
     margin-top: 30px;
     font-size: 25px;
   }
@@ -93,43 +89,22 @@ const ContainerM = styled.div`
   }
 `;
 
-const Messagerie = () => {
+const ReceivedMessage = () => {
   const [createWriteModalVisible, setCreateWriteModalVisible] = useState(false);
-  const { user } = useContext(VolunteerContext);
-  const { getMessages, messages } = useContext(ListMessageContext);
+  const { user } = useContext(VolunteerContext)
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      getMessages(user._id);
-    }
-  }, []);
-
-  if (!user) {
-    return (
-      <Container>
-        <Sidebar />
-        <Content>
-          <Title>Sessions</Title>
-          <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
-        </Content>
-      </Container>
-    );
-  }
 
   return (
     <ContainerM>
       <Sidebar />
       <Content>
         <div className="messagerie">
-          <h1>Messagerie</h1>
+          <h1>Reçu</h1>
           <div className="buttons">
-            <button className="recu" onClick={() => navigate("/recu")}>
-              <FaEnvelopeOpenText />
+          <button className="envoyés" onClick={() => navigate('/envoyes')}>
+              <RiMailSendFill/>
             </button>
-            <button className="envoyés" onClick={() => navigate("/envoyes")}>
-              <RiMailSendFill />
-            </button>
+          
             <button
               onClick={() => setCreateWriteModalVisible(true)}
               className="ecrire"
@@ -138,13 +113,12 @@ const Messagerie = () => {
             </button>
           </div>
           <div className="titre">
-            <p className="Tirecu">Reçu</p>
-            <p className="Tienvoyés">Envoyés</p>
+          <p className="Tienvoyés">Envoyés</p>
             <p className="Tiecrire">Ecrire</p>
           </div>
-
+        
           {/* <EmailRow /> */}
-          <EmailList filter="none" />
+          <EmailList filter="received" />
         </div>
       </Content>
       <CreateWriteModal
@@ -155,4 +129,4 @@ const Messagerie = () => {
   );
 };
 
-export default Messagerie;
+export default ReceivedMessage

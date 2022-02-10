@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaReply } from 'react-icons/fa'
 import { MdOutlineArrowLeft } from 'react-icons/md'
@@ -8,6 +8,8 @@ import { Content, Title } from '../components/styled-components/FormPage'
 import Sidebar from '../components/Sidebar';
 import CreateToRespondModal from "../modals/CreateToRespondModal";
 import { useState } from "react";
+import { ListMessageContext } from '../contexts/ListMessage';
+import moment from 'moment'
 
 const Container = styled.div`
 height: 100vh;
@@ -63,8 +65,14 @@ padding: 80px;
 
 
 const Mail = () => {
+    const { id_message } = useParams()
     const { user } = useContext(VolunteerContext)
     const [createToRespondModalVisible, setCreateToRespondModalVisible] = useState(false);
+    const { message, getMessage } = useContext(ListMessageContext)
+    
+    useEffect(() => {
+        getMessage(id_message)
+    }, [])
 
     // if (!user) {
     //     return (
@@ -78,6 +86,20 @@ const Mail = () => {
     //     );
     //   }
 
+    console.log(message)
+
+    if (!message) {
+        return (
+          <Container>
+            <Sidebar />
+            <Content>
+              <Title>Sessions</Title>
+              <p>Le message n'existe pas </p>
+            </Content>
+          </Container>
+        );
+      }
+
     return (
         <Container>
             <BlueHeader>
@@ -86,11 +108,11 @@ const Mail = () => {
                         <MdOutlineArrowLeft />Retour
                     </Link>
                 </ButtonBack>
-                <Subject>Email Subject</Subject>
+                <Subject>{message.object}</Subject>
             </BlueHeader>
             <div>
-                <Sender>Sender / Date</Sender>
-                <EmailContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu nisl non nisi consectetur porta. Sed ac dolor ac sapien imperdiet interdum. Aliquam quis ligula viverra, volutpat augue vel, commodo mauris. Donec eu tellus tellus. Etiam sit amet tincidunt mi. Nulla vel aliquet ante. In porta dolor eu semper facilisis. Quisque ut dolor congue, mollis mauris sed, semper velit. Donec eget velit leo. Fusce accumsan ultrices placerat. Proin aliquet purus non ante molestie, ac pulvinar nunc lobortis. Integer ac dui eleifend, lacinia risus sed, varius purus. Sed consequat a diam vitae commodo.Nunc ullamcorper mollis neque non interdum. Nam elementum elementum tortor eget tincidunt. Integer metus nisi, dignissim a euismod at, dapibus at elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed varius molestie risus, sit amet finibus felis egestas non. Nullam laoreet, arcu ut consequat viverra, nunc odio euismod felis, sit amet tincidunt mi enim efficitur quam. Vivamus commodo consequat ante at dictum. Vestibulum feugiat dui velit. Aliquam erat volutpat. Donec ut lacus dolor. Cras in erat commodo, dapibus mi sit amet, tristique erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam vitae suscipit nunc. Proin varius felis velit, sit amet euismod lorem dictum ac. Proin suscipit sapien in lectus fermentum, vel mattis ante ornare.</EmailContent>
+                <Sender>{message.from.lastName} {message.from.firstName} - {moment(message.createdAt).format("DD/MM/YYYY - h:mm")}</Sender>
+                <EmailContent>{message.contents}</EmailContent>
                 <ButtonDiv>
                     <ButtonReply onClick={() => setCreateToRespondModalVisible(true)}><FaReply /> Répondre</ButtonReply>
                 </ButtonDiv>

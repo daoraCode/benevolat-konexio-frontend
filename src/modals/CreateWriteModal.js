@@ -53,6 +53,8 @@ border: 3px solid rgb(212, 210, 210);
 }
 `
 
+Modal.setAppElement('#root')
+
 const CreateWriteModal = ({ isOpen, onClose }) => {
   return (
     <Modal
