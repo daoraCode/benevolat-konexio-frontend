@@ -53,7 +53,17 @@ const EmailList = ({ filter }) => {
   const { messages } = useContext(ListMessageContext);
   const { user } = useContext(VolunteerContext)
 
-  if (!messages) return <p>chargement</p>
+  if (!messages) {
+    return (
+      <List>
+      <div className="emailList">
+        <div className="emailListSettings">
+          
+        </div>
+      </div>
+    </List>
+  );
+  }
 
   return (
     <List>
@@ -66,22 +76,7 @@ const EmailList = ({ filter }) => {
         </div>
         <div className="emailList_list">
 
-          {filter === "none" && messages.map((message) => {
-            console.log(message);
-            const { from, object, createdAt, _id } = message;
-
-            return (
-              <EmailRow
-                key={_id}
-                from={from}
-                object={object}
-                date={createdAt}
-                messageId={_id}
-              />
-            );
-          })}
-
-          {filter === "none" && messages.map((message) => {
+          {messages.map((message) => {
             console.log(message);
             const { from, object, createdAt, _id } = message;
 

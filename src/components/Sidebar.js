@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import React, { useContext } from 'react'
-import styled from 'styled-components'
-import Logo from '../images/konexio.png'
-
-import { Link } from "react-router-dom"
-import { VolunteerContext } from '../contexts/Volunteer'
-=======
 import React, { useContext } from "react";
 import styled from "styled-components";
 import Logo from "../images/konexio.png";
 
 import { Link } from "react-router-dom";
 import { VolunteerContext } from "../contexts/Volunteer";
->>>>>>> f93e6b24d0af0875ed8f1f98b59c91fcfe1f989a
 
 const Nav = styled.nav`
   padding: 0;
@@ -52,37 +43,6 @@ const H1 = styled.h1`
 const Sidebar = () => {
   const { logout } = useContext(VolunteerContext);
 
-<<<<<<< HEAD
-    return (
-        <Nav>
-            <Img src={Logo} />
-            <Link to='/sessions' className="link nav">
-                <H1>Sessions</H1>
-            </Link>
-            <Link to='/profile' className="link nav">
-                <H1>Profile</H1>
-            </Link>
-            <Link to='/news' className="link nav">
-                <H1>News</H1>
-            </Link>
-            <Link to='/messagerie' className="link nav">
-                <H1>Messagerie</H1>
-            </Link>
-            <Link to='/profile' className="link nav">
-                <H1>Profil</H1>
-            </Link>
-            <Link to='/faq' className="link nav">
-                <H1>F.A.Q</H1>
-            </Link>
-            <div onClick={() => logout()} className="link nav">
-                <H1>Logout</H1>
-            </div>
-        </Nav>
-    )
-}
-
-export default Sidebar
-=======
   return (
     <Nav>
       <Img src={Logo} />
@@ -109,4 +69,3 @@ export default Sidebar
 };
 
 export default Sidebar;
->>>>>>> f93e6b24d0af0875ed8f1f98b59c91fcfe1f989a

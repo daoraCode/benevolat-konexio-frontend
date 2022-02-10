@@ -18,9 +18,9 @@ const modalStyle = {
 }
 
 const Logos = styled.div`
-{
+
     display : flex
-}
+
 
 // button {
 //   background-color: black;
@@ -36,9 +36,9 @@ h2 {
 }
 `
 const Logo = styled.div`
-{
+
     cursor: pointer
-}
+
 `
 const Picturemodal = styled.div`
 .row img {

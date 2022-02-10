@@ -153,6 +153,6 @@ const Messagerie = () => {
       />
     </ContainerM>
   );
-};
+}; 
 
 export default Messagerie;
