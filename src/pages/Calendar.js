@@ -1,13 +1,15 @@
 import React, { useContext, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-import moment from "moment"
-import "moment/locale/fr"
-import { datesGenerator } from "dates-generator"
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
+import moment from "moment";
+import "moment/locale/fr";
+import { datesGenerator } from "dates-generator";
 
-import styled from "styled-components"
+import {
+  MdOutlineKeyboardArrowLeft,
+  MdOutlineKeyboardArrowRight,
+} from "react-icons/md";
+import styled from "styled-components";
 import {
   Title,
   Content,
@@ -17,75 +19,96 @@ import { MdOutlineArrowLeft } from "react-icons/md"
 import {
   ButtonReturn,
   SubTitle,
-} from "../components/styled-components/CalendarStyle"
-import Sidebar from "../components/Sidebar"
-import CardSession from "../components/CardSession"
-// import CalendarComponent from "../components/CalendarComponent"
+} from "../components/styled-components/CalendarStyle";
+import Sidebar from "../components/Sidebar";
+import CardSession from "../components/CardSession";
 
-import { ListSessionsContext } from "../context/ListSessions"
-import { useState } from "react/cjs/react.development"
+import { ListSessionsContext } from "../contexts/ListSessions";
+import { useState } from "react/cjs/react.development";
+import { VolunteerContext } from "../contexts/Volunteer";
 
 const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
+  "Janvier",
+  "Février",
+  "Mars",
+  "Avril",
+  "Mai",
+  "Juin",
+  "Juillet",
+  "Août",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Décembre",
 ];
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const days = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
 
 const ContainerCalendar = styled.div`
-  width: 300px;
-  border: 1px solid black;
+  width: 100%;
   margin: 0 auto;
-  box-shadow: 10px 10px 0px black;
 `;
 
 const MonthText = styled.div`
   font-size: 26px;
   font-weight: bold;
   text-align: center;
+  color: #0375bb;
+`;
+
+const Box = styled.div`
+  background-color: #81b5d4;
+  height: 100%;
+  padding: 5px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: #025e96;
+    color: white;
+  }
+`;
+
+const NumberDay = styled.div`
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
 `;
 
 const Calendar = () => {
   const { id_session } = useParams();
-  const { getSession, session } = useContext(ListSessionsContext);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const { user } = useContext(VolunteerContext);
+  const { getSession, session, bookDay } = useContext(ListSessionsContext);
+  // const [selectedDate, setSelectedDate] = useState();
   const [dates, setDates] = useState([]);
-  const [calendar, setCalendar] = useState({
-    month: selectedDate.getMonth(),
-    year: selectedDate.getFullYear(),
-  });
+  const [calendar, setCalendar] = useState({});
 
   useEffect(() => {
     getSession(id_session);
   }, []);
 
-  const getCalendar = () => {
-    setCalendar({
-      // month: moment(session.startDate).month(),
-      // year: moment(session.startDate).year(),
-      month: moment().month(),
-      year: moment().year(),
-    });
+  useEffect(() => {
+    if (session) {
+      getCalendar();
+    }
+  }, [session]);
 
+  const getCalendar = () => {
     const body = {
-      month: calendar.month,
-      year: calendar.year,
+      month: moment(session.startDate).month(),
+      year: moment(session.startDate).year(),
     };
+
     const { dates, nextMonth, nextYear, previousMonth, previousYear } =
       datesGenerator(body);
 
     setDates([...dates]);
+
     setCalendar({
-      ...calendar,
+      ...body,
       nextMonth,
       nextYear,
       previousMonth,
@@ -128,11 +151,20 @@ const Calendar = () => {
   };
 
   const onSelectDate = (date) => {
-    setSelectedDate(new Date(date.year, date.month, date.date));
+    bookDay(date, user._id, session._id);
   };
 
-  // console.log(calendar)
-  // console.log(dates)
+  if (!user) {
+    return (
+      <Container>
+        <Sidebar />
+        <Content>
+          <Title>Sessions</Title>
+          <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
+        </Content>
+      </Container>
+    );
+  }
 
   if (!session) {
     return (
@@ -173,26 +205,37 @@ const Calendar = () => {
           {/* Calendar component */}
           <div style={{ width: "100%", paddingTop: 50 }}>
             <ContainerCalendar>
-              <div style={{ padding: 10 }}>
-                <div
-                  onClick={onClickPrevious}
-                  style={{ float: "left", width: "50%" }}
-                >
-                  Previous
+              <div
+                style={{
+                  padding: 10,
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  marginBottom: 20
+                }}
+              >
+                <div onClick={onClickPrevious} style={{ float: "left" }}>
+                  <MdOutlineKeyboardArrowLeft style={{ fontSize: 25 }} />
                 </div>
+                <MonthText>{months[calendar.month]}</MonthText>
                 <div
                   onClick={onClickNext}
-                  style={{ float: "left", width: "50%", textAlign: "right" }}
+                  style={{ float: "left", textAlign: "right" }}
                 >
-                  Next
+                  <MdOutlineKeyboardArrowRight style={{ fontSize: 25 }} />
                 </div>
               </div>
-              <MonthText>{months[calendar.month]}</MonthText>
               <div>
                 <div>
-                  <table style={{ width: "100%" }}>
+                  <table
+                    style={{ width: "100%" }}
+                    cellPadding="0"
+                    border="0"
+                    align="center"
+                    cellSpacing="0"
+                  >
                     <tbody>
-                      <tr>
+                      <tr style={{ backgroundColor: "#cdcdcd" }}>
                         {days.map((day) => (
                           <td key={day} style={{ padding: "5px 0" }}>
                             <div
@@ -207,33 +250,42 @@ const Calendar = () => {
                       {dates.length > 0 &&
                         dates.map((week) => (
                           <tr key={JSON.stringify(week[0])}>
-                            {week.map((each) => (
-                              <td
-                                key={JSON.stringify(each)}
-                                style={{ padding: "5px 0" }}
-                              >
-                                <div
-                                  onClick={() => onSelectDate(each)}
+                            {week.map((each) => {
+                              return (
+                                <td
+                                  key={JSON.stringify(each)}
                                   style={{
-                                    textAlign: "center",
-                                    padding: "5px 0",
+                                    padding: "10px 5px",
+                                    height: 100,
+                                    width: 100,
+                                    verticalAlign: "top",
                                   }}
                                 >
-                                  {each.date}
-                                </div>
-                              </td>
-                            ))}
+                                  <Box
+                                    onClick={() =>
+                                      onSelectDate(
+                                        moment(
+                                          `${each.year}-${each.month + 1}-${each.date}`
+                                        ).format("YYYY-MM-DD")
+                                      )
+                                    }
+                                    className={session.days.find((day) => moment(day.date).format("YYYY-MM-DD") === moment(`${each.year}-${each.month + 1}-${each.date}`).format("YYYY-MM-DD") && day.users.find(userDay => userDay === user._id)) && 'selected'}
+                                  >
+                                    <NumberDay>{each.date}</NumberDay>
+                                    {session.days.find((day) => moment(day.date).format("YYYY-MM-DD") === moment(`${each.year}-${each.month + 1}-${each.date}`).format("YYYY-MM-DD") && day.users.find(userDay => userDay._id === user._id)) && <p>{user.lastName} {user.firstName}</p>}
+                                  </Box>
+                                </td>
+                              );
+                            })}
                           </tr>
                         ))}
                     </tbody>
                   </table>
                 </div>
               </div>
-              <div style={{ padding: 10 }}>
-                Selected Date: {selectedDate.toLocaleString()}
-              </div>
             </ContainerCalendar>
-          </div>
+            </div>
+            <div style={{ height: 40 }}></div>
         </Content>
       </Container>
     </>

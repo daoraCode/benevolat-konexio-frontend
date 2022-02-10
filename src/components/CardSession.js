@@ -31,7 +31,7 @@ const CardSession = (props) => {
   const { programName, sessionId, start, end, numberOfPlace, adress, site } = props
 
   return (
-    <CardSessions session={programName} site={site} >
+    <CardSessions session={programName} site={site} key={sessionId} >
       <Link to={`/sessions/${sessionId}`} className="link link-card">
         <CardTitle>
           {start} - {end}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import {
@@ -10,9 +10,10 @@ import { ListSessionsContext } from "../contexts/ListSessions";
 import moment from "moment";
 import "moment/locale/fr"
 import { VolunteerContext } from '../contexts/Volunteer';
+import CardSession from "../components/CardSession";
+
 
 const List = styled.div`
-
   margin-top: 22px;
   height: calc(100vh - 135px);
   overflow-y: scroll;
@@ -35,26 +36,23 @@ const List = styled.div`
 
 const Home = () => {
   const { sessions, getSessions } = useContext(ListSessionsContext);
-  const { user } = useContext(VolunteerContext)
+  const { user } = useContext(VolunteerContext);
 
   useEffect(() => {
     getSessions();
   }, []);
 
-
-  if(!user) {
+  if (!user) {
     return (
       <Container>
-      <Sidebar />
-      <Content>
-        <Title>Sessions</Title>
-        <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
-      </Content>
-    </Container>
-    )
+        <Sidebar />
+        <Content>
+          <Title>Sessions</Title>
+          <p>Vous n'êtes pas autorisé.e à acceder à la page</p>
+        </Content>
+      </Container>
+    );
   }
-
-  console.log(user)
 
   return (
     <Container>
@@ -71,9 +69,9 @@ const Home = () => {
               const end = moment(endDate).locale("fr").format("DD MMMM");
               return (
                 <CardSession
-                  site='sessions'
-                  key={session._id} 
-                  programName={program.name} 
+                  site="sessions"
+                  key={session._id}
+                  programName={program.name}
                   sessionId={session._id}
                   start={start}
                   end={end}
