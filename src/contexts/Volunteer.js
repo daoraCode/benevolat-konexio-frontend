@@ -53,6 +53,7 @@ const VolunteerContextProvider = ({ children }) => {
       alert(loginResponse.statusText)
     } else {
       console.log(loginResponse)
+      navigate("/sessions")
     }
     
     setUser(loginData)
